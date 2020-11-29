@@ -1,10 +1,10 @@
-package test;
+package examples;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Function;
 
-import static test.Helpers.*;
+import static examples.Helpers.*;
 
 public interface SimpleInterpreter {
     interface M<A> {

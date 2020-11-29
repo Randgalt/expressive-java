@@ -7,14 +7,14 @@ to Scala’s case classes. In future JDKs records will have near feature parity 
 ## The Example
 
 For me, the most expressive feature of Scala is its case classes with pattern matching. Once you’ve coded with this 
-feature you’ll never want to return to the alternatives. This blog post shows Java’s progress towards equalling Scala’s 
+feature you’ll never want to return to the alternatives. This repo shows Java’s progress towards equalling Scala’s 
 case class feature. It’s unlikely that Java will ever completely match Scala but it will get close.
 
 Shown here is a very old interpreter from the [Scala examples website](https://www.scala-lang.org/old/node/56.html). It’s 
 not meant to represent current idiomatic Scala nor is it meant to be a definitive example. However, it’s simple, fits on one 
 page and shows the expressiveness of case classes.
 
-Two Java attempts are shown. One in Java 15 taking advantage of records and pattern matching for instance-of. The other in Java 8.
+Two Java attempts are shown. One in Java 15 taking advantage of records and pattern matching for instanceof. The other in Java 8.
 
 ## Java 15 Attempt
 
@@ -25,13 +25,13 @@ classes a bit cleaner (no need for `new`). Fortunately, my [RecordBuilder librar
 can auto-generate these so I’ve used it here to match Scala.
 
 The major thing missing in this Java 15 attempt is, of course, Scala’s case-match. Future versions of Java will 
-add support for something similar but for now I’ve had to use Java 15’s [new pattern matching for instance of](https://openjdk.java.net/jeps/375).
+add support for something similar but for now I’ve had to use Java 15’s [new pattern matching for instanceof](https://openjdk.java.net/jeps/375).
 
-Java 15 is also missing a builtin Pair class. With records, however, this is very easy to create. Java also does 
-not support type aliases. It’s unlikely Java will add support for this. Thus, the Scala examples `Environment` and `Name` 
+Java 15 is also missing a built-in Pair class. With records, however, this is very easy to create. Java also does 
+not support type aliases. It’s unlikely Java will add support for this. Thus, the Scala example’s `Environment` and `Name` 
 cannot be duplicated.
 
-These caveats aside, the Java 15 is not too bad. Once we get Java’s version of pattern matching it will be possible 
+These caveats aside, the Java 15 attempt is not too bad. Once we get Java’s version of pattern matching it will be possible 
 to write a near perfect duplication of this Scala example.
 
 ## Java 8 Attempt
@@ -42,14 +42,27 @@ Having to use Java interfaces as a spec for the Immutables builder is not as sat
 code much more verbose. Also, the Immutables builder does not generate static constructors/builders so these 
 have to be added manually.
 
-Like in the Java 15 example, there is no built in Pair class and in this Java 8 instance it has to be 
+Like in the Java 15 example, there is no built-in Pair class and in this Java 8 instance it has to be 
 specified as an interface so that Immutables can generate the implementation.
 
-Lastly, Java 8 does not have Java 15’s pattern matching for instance of so extra work in the form of 
-casts must be done in the parts of the code match on operation types.
+Lastly, Java 8 does not have Java 15’s pattern matching for instanceof so extra work in the form of 
+casts must be done in the parts of the code that match on operation types.
 
 ## Links
 
-- Original Scala Example: https://www.scala-lang.org/old/node/56.html
-- Java 15 Attempt: https://github.com/Randgalt/expressive-java/blob/master/java-15/src/main/java/test/SimpleInterpreter.java
-- Java 8 Attempt: https://github.com/Randgalt/expressive-java/blob/master/java-8/src/main/java/test/SimpleInterpreter.java
+- Original Scala Example: [Scala SimpleInterpreter](https://www.scala-lang.org/old/node/56.html)
+- Java 15 Attempt: [Java 15 SimpleInterpreter](https://github.com/Randgalt/expressive-java/blob/master/java-15/src/main/java/examples/SimpleInterpreter.java#L17)
+- Java 8 Attempt: [Java 8 SimpleInterpreter](https://github.com/Randgalt/expressive-java/blob/master/java-8/src/main/java/examples/SimpleInterpreter.java#L9)
+- Helpers:
+  - Java 15:
+    - [Helpers.java](https://github.com/Randgalt/expressive-java/blob/master/java-15/src/main/java/examples/Helpers.java)
+    - [Pair.java](https://github.com/Randgalt/expressive-java/blob/master/java-15/src/main/java/examples/Pair.java)
+  - Java 8:
+    - [Helpers.java](https://github.com/Randgalt/expressive-java/blob/master/java-8/src/main/java/examples/Helpers.java)
+    - [Pair.java](https://github.com/Randgalt/expressive-java/blob/master/java-8/src/main/java/examples/Pair.java)
+
+## Building/Running
+
+- Make sure [Java 15](https://jdk.java.net/15/) is installed and is set via `JAVA_HOME`
+- Make sure a recent version of [Maven](https://maven.apache.org) is installed
+- From the root directory run `./run.sh` to build and run both the Java 15 and Java 8 versions

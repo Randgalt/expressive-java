@@ -1,18 +1,18 @@
-package test;
+package examples;
 
 import java.util.List;
 import java.util.function.Function;
 
-import static test.Helpers.cons;
-import static test.MBuilder.M;
-import static test.NumBuilder.Num;
-import static test.PairBuilder.Pair;
-import static test.VarBuilder.Var;
-import static test.AddBuilder.Add;
-import static test.LamBuilder.Lam;
-import static test.ConBuilder.Con;
-import static test.AppBuilder.App;
-import static test.FunBuilder.Fun;
+import static examples.AddBuilder.Add;
+import static examples.AppBuilder.App;
+import static examples.ConBuilder.Con;
+import static examples.FunBuilder.Fun;
+import static examples.Helpers.cons;
+import static examples.LamBuilder.Lam;
+import static examples.MBuilder.M;
+import static examples.NumBuilder.Num;
+import static examples.PairBuilder.Pair;
+import static examples.VarBuilder.Var;
 
 public interface SimpleInterpreter {
     record M<A>(A value) {
@@ -62,7 +62,7 @@ public interface SimpleInterpreter {
     }
 
     static M<Value> lookup(String x, List<Pair<String, Value>> e) {
-        if ( e.isEmpty() ) {
+        if (e.isEmpty()) {
             return unitM(Wrong);
         }
         var first = e.get(0);
@@ -70,35 +70,35 @@ public interface SimpleInterpreter {
     }
 
     static M<Value> add(Value a, Value b) {
-        if ( (a instanceof Num m) && (b instanceof Num n) ) {
-            return unitM(Num(m.n + n.n));
+        if ((a instanceof Num aNum) && (b instanceof Num bNum)) {
+            return unitM(Num(aNum.n + bNum.n));
         }
         return unitM(Wrong);
     }
 
     static M<Value> apply(Value a, Value b) {
-        if ( a instanceof Fun f ) {
-            return f.f.apply(b);
+        if (a instanceof Fun fun) {
+            return fun.f.apply(b);
         }
         return unitM(Wrong);
     }
 
     static M<Value> interp(Term t, List<Pair<String, Value>> e) {
-        if ( t instanceof Var v ) {
-            return lookup(v.x, e);
+        if (t instanceof Var var) {
+            return lookup(var.x, e);
         }
-        if ( t instanceof Con con ) {
+        if (t instanceof Con con) {
             return unitM(Num(con.n));
         }
-        if ( t instanceof Add add ) {
+        if (t instanceof Add add) {
             var a = interp(add.l, e);
             var b = interp(add.r, e);
             return add(a.value, b.value);
         }
-        if ( t instanceof Lam lam ) {
+        if (t instanceof Lam lam) {
             return unitM(Fun(a -> interp(lam.body, cons(Pair(lam.x, a), e))));
         }
-        if ( t instanceof App app ) {
+        if (t instanceof App app) {
             var a = interp(app.fun, e);
             var b = interp(app.arg, e);
             return apply(a.value, b.value);

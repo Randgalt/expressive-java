@@ -1,32 +1,34 @@
-package test;
+package examples;
 
 import org.immutables.value.Value;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.function.Function;
 
 @Value.Style(
-    of = "new",
-    allParameters = true
+        of = "new",
+        allParameters = true
 )
 @Value.Include({
-    SimpleInterpreter.M.class,
-    SimpleInterpreter.Term.class,
-    SimpleInterpreter.Con.class,
-    SimpleInterpreter.Add.class,
-    SimpleInterpreter.Lam.class,
-    SimpleInterpreter.App.class,
-    SimpleInterpreter.Num.class,
-    SimpleInterpreter.Fun.class,
-    SimpleInterpreter.Var.class,
-    Pair.class
+        SimpleInterpreter.M.class,
+        SimpleInterpreter.Term.class,
+        SimpleInterpreter.Con.class,
+        SimpleInterpreter.Add.class,
+        SimpleInterpreter.Lam.class,
+        SimpleInterpreter.App.class,
+        SimpleInterpreter.Num.class,
+        SimpleInterpreter.Fun.class,
+        SimpleInterpreter.Var.class,
+        Pair.class
 })
 public class Helpers {
     public static <T> List<T> cons(T value, List<T> list) {
-        ArrayList<T> worker = new ArrayList<T>();
+        ArrayList<T> worker = new ArrayList<>();
         worker.add(value);
         worker.addAll(list);
-        return worker;
+        return Collections.unmodifiableList(worker);
     }
 
     public static <A> SimpleInterpreter.M<A> M(A a) {

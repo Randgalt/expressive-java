@@ -1,7 +1,8 @@
-package test;
+package examples;
 
 import io.soabase.recordbuilder.core.RecordBuilder;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @RecordBuilder.Include({
@@ -20,6 +21,6 @@ public class Helpers {
         var worker = new ArrayList<T>();
         worker.add(value);
         worker.addAll(list);
-        return worker;
+        return Collections.unmodifiableList(worker);
     }
 }
