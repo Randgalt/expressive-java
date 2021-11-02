@@ -16,6 +16,20 @@ page and shows the expressiveness of case classes.
 
 Two Java attempts are shown. One in Java 15 taking advantage of records and pattern matching for instanceof. The other in Java 8.
 
+## Java 17 Attempt
+
+Java records are now part of the language. My [RecordBuilder library](https://github.com/Randgalt/record-builder) is still used for some builder sugar. Huge
+kudos to [Gavin Ray](https://github.com/GavinRay97) for contributing the Java 17
+version using Sealed Classes as well as Pattern Matching for Switch. This is
+getting very, very close to the Scala version now. Once deconstruction is added
+we'll have a nearly exact version.
+
+Java 17's enhanced pattern matching for switch is missing reification and deconstruction. So, for now,
+a hacked `PairNumNum` is used to simulate switching and matching `Pair<Num, Num>`. 
+
+See the Java 15 attempt for what will be permanent issues with lack of a `Pair`
+and type aliasing.
+
 ## Java 15 Attempt
 
 [Java 15’s Records](https://openjdk.java.net/jeps/359) are an interim feature towards full pattern matching and 
@@ -51,9 +65,14 @@ casts must be done in the parts of the code that match on operation types.
 ## Links
 
 - Original Scala Example: [Scala SimpleInterpreter](https://www.scala-lang.org/old/node/56.html)
+- Java 17 Attempt: [Java 17 SimpleInterpreter](https://github.com/Randgalt/expressive-java/blob/master/java-17/src/main/java/examples/SimpleInterpreter.java#L17)
 - Java 15 Attempt: [Java 15 SimpleInterpreter](https://github.com/Randgalt/expressive-java/blob/master/java-15/src/main/java/examples/SimpleInterpreter.java#L17)
 - Java 8 Attempt: [Java 8 SimpleInterpreter](https://github.com/Randgalt/expressive-java/blob/master/java-8/src/main/java/examples/SimpleInterpreter.java#L9)
 - Helpers:
+  - Java 17:
+    - [Helpers.java](https://github.com/Randgalt/expressive-java/blob/master/java-17/src/main/java/examples/Helpers.java)
+    - [Pair.java](https://github.com/Randgalt/expressive-java/blob/master/java-17/src/main/java/examples/Pair.java)
+    - [PairNumNum.java](https://github.com/Randgalt/expressive-java/blob/master/java-17/src/main/java/examples/PairNumNum.java)
   - Java 15:
     - [Helpers.java](https://github.com/Randgalt/expressive-java/blob/master/java-15/src/main/java/examples/Helpers.java)
     - [Pair.java](https://github.com/Randgalt/expressive-java/blob/master/java-15/src/main/java/examples/Pair.java)

@@ -12,7 +12,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <jdk-version>15</jdk-version>
-        <record-builder-version>1.13.ea</record-builder-version>
+        <record-builder-version>27-java15</record-builder-version>
         <maven-compiler-plugin-version>3.8.1</maven-compiler-plugin-version>
     </properties>
 
@@ -48,6 +48,23 @@
                         <arg>-AprefixEnclosingClassNames=false</arg>
                     </compilerArgs>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <execution>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>examples.SimpleInterpreter</mainClass>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
