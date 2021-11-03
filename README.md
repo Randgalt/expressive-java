@@ -14,7 +14,7 @@ Shown here is a very old interpreter from the [Scala examples website](https://w
 not meant to represent current idiomatic Scala nor is it meant to be a definitive example. However, it’s simple, fits on one 
 page and shows the expressiveness of case classes.
 
-Two Java attempts are shown. One in Java 15 taking advantage of records and pattern matching for instanceof. The other in Java 8.
+Three Java attempts are shown. Versions in Java 15 and 17 taking advantage of records and pattern matching for instanceof. The other in Java 8.
 
 ## Java 17 Attempt
 
