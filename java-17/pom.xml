@@ -15,7 +15,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <jdk-version>17</jdk-version>
-        <record-builder-version>29-SNAPSHOT</record-builder-version>
+        <record-builder-version>29</record-builder-version>
         <maven-compiler-plugin-version>3.8.1</maven-compiler-plugin-version>
     </properties>
 
