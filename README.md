@@ -25,7 +25,7 @@ getting very, very close to the Scala version now. Once deconstruction is added
 we'll have a nearly exact version.
 
 Java 17's enhanced pattern matching for switch is missing reification and deconstruction. So, for now,
-a hacked `PairNumNum` is used to simulate switching and matching `Pair<Num, Num>`. 
+a combination of the current pattern-matching-for `switch` with an extra pattern match for `instanceof` is used. 
 
 See the Java 15 attempt for what will be permanent issues with lack of a `Pair`
 and type aliasing.

@@ -12,7 +12,6 @@ import static examples.LamBuilder.Lam;
 import static examples.MBuilder.M;
 import static examples.NumBuilder.Num;
 import static examples.PairBuilder.Pair;
-import static examples.PairNumNum.PairNumNum;
 import static examples.VarBuilder.Var;
 
 public interface SimpleInterpreter {
@@ -72,8 +71,8 @@ public interface SimpleInterpreter {
     }
 
     static M<Value> add(Value a, Value b) {
-        return switch (PairNumNum(a, b)) {
-            case PairNumNum p -> unitM(Num(p.a().n + p.b().n));
+        return switch (Pair(a, b)) {
+            case Pair p && p.a() instanceof Num m && p.b() instanceof Num n -> unitM(Num(m.n() + n.n()));
             default -> unitM(Wrong.INSTANCE);
         };
     }
