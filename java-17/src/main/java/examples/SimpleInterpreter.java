@@ -12,7 +12,6 @@ import static examples.LamBuilder.Lam;
 import static examples.MBuilder.M;
 import static examples.NumBuilder.Num;
 import static examples.PairBuilder.Pair;
-import static examples.PairNumNum.PairNumNum;
 import static examples.VarBuilder.Var;
 
 public interface SimpleInterpreter {
@@ -64,16 +63,16 @@ public interface SimpleInterpreter {
     }
 
     static M<Value> lookup(String x, List<Pair<String, Value>> e) {
-        if (e.isEmpty()) {
-            return unitM(Wrong.INSTANCE);
-        }
-        var first = e.get(0);
-        return first.a().equals(x) ? unitM(first.b()) : lookup(x, e.subList(1, e.size()));
+        return switch (e) {
+            case List __ && e.isEmpty() -> unitM(Wrong.INSTANCE);
+            case List __ && e.get(0).a().equals(x) -> unitM(e.get(0).b());
+            default -> lookup(x, e.subList(1, e.size()));
+        };
     }
 
     static M<Value> add(Value a, Value b) {
-        return switch (PairNumNum(a, b)) {
-            case PairNumNum p -> unitM(Num(p.a().n + p.b().n));
+        return switch (Pair(a, b)) {
+            case Pair p && p.a() instanceof Num m && p.b() instanceof Num n -> unitM(Num(m.n() + n.n()));
             default -> unitM(Wrong.INSTANCE);
         };
     }
