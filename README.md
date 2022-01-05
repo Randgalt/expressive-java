@@ -72,7 +72,6 @@ casts must be done in the parts of the code that match on operation types.
   - Java 17:
     - [Helpers.java](https://github.com/Randgalt/expressive-java/blob/master/java-17/src/main/java/examples/Helpers.java)
     - [Pair.java](https://github.com/Randgalt/expressive-java/blob/master/java-17/src/main/java/examples/Pair.java)
-    - [PairNumNum.java](https://github.com/Randgalt/expressive-java/blob/master/java-17/src/main/java/examples/PairNumNum.java)
   - Java 15:
     - [Helpers.java](https://github.com/Randgalt/expressive-java/blob/master/java-15/src/main/java/examples/Helpers.java)
     - [Pair.java](https://github.com/Randgalt/expressive-java/blob/master/java-15/src/main/java/examples/Pair.java)
