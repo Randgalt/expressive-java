@@ -16,6 +16,8 @@ page and shows the expressiveness of case classes.
 
 Three Java attempts are shown. Versions in Java 15 and 17 taking advantage of records and Java's initial support for pattern matching. The other in Java 8.
 
+![](comparison.png)
+
 ## Java 17 Attempt
 
 Java records are now part of the language. My [RecordBuilder library](https://github.com/Randgalt/record-builder) is still used for some builder sugar. Huge
