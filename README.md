@@ -16,7 +16,14 @@ page and shows the expressiveness of case classes.
 
 Three Java attempts are shown. Versions in Java 15 and 17 taking advantage of records and Java's initial support for pattern matching. The other in Java 8.
 
-[![](comparison.png)](https://raw.githubusercontent.com/Randgalt/expressive-java/master/comparison.png)
+[![](comparison.png)](comparison.png)
+
+## Java 19 Attempt
+
+Record patterns are now available and the Java version is nearly identical to the Scala version. Record patterns
+are limited to type comparison and extraction and so can't match on, for example, empty-list but that's aboout
+the only feature missing. Java is still more verbose (the need for `var` for example) but it's very impressive
+how close it now is. Java, of course, is still missing a built-in `Pair` syntax for list head/tail, etc.
 
 ## Java 17 Attempt
 
@@ -71,6 +78,9 @@ casts must be done in the parts of the code that match on operation types.
 - Java 15 Attempt: [Java 15 SimpleInterpreter](https://github.com/Randgalt/expressive-java/blob/master/java-15/src/main/java/examples/SimpleInterpreter.java#L17)
 - Java 8 Attempt: [Java 8 SimpleInterpreter](https://github.com/Randgalt/expressive-java/blob/master/java-8/src/main/java/examples/SimpleInterpreter.java#L9)
 - Helpers:
+  - Java 19:
+    - [Helpers.java](https://github.com/Randgalt/expressive-java/blob/master/java-19/src/main/java/examples/Helpers.java)
+    - [Pair.java](https://github.com/Randgalt/expressive-java/blob/master/java-19/src/main/java/examples/Pair.java)
   - Java 17:
     - [Helpers.java](https://github.com/Randgalt/expressive-java/blob/master/java-17/src/main/java/examples/Helpers.java)
     - [Pair.java](https://github.com/Randgalt/expressive-java/blob/master/java-17/src/main/java/examples/Pair.java)
@@ -83,6 +93,7 @@ casts must be done in the parts of the code that match on operation types.
 
 ## Building/Running
 
-- Make sure [Java 15](https://jdk.java.net/15/) is installed and is set via `JAVA_HOME`
+- Make sure Javas 8, 15, 17 and 19 are installed as well as [jenv](https://www.jenv.be)
 - Make sure a recent version of [Maven](https://maven.apache.org) is installed
-- From the root directory run `./run.sh` to build and run both the Java 15 and Java 8 versions
+- From the root directory run `./run.sh`
+

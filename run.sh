@@ -1,28 +1,38 @@
 #!/usr/bin/env zsh
 
-jenv --version
-
 HOME=$(PWD)
 
-echo "Building Java 15 version"
-cd "$HOME/java-15" || exit
-jenv shell 15
-export JAVA_HOME=`jenv javahome`
-mvn clean verify
+buildVersion() {
+  echo "Building Java $1 version"
+  cd "$HOME/java-$1" || exit
+  export JENV_VERSION=$2
+  export JAVA_HOME=$(jenv javahome)
+  echo $(java -version)
+  mvn clean verify
+  echo ""
+}
 
-echo ""
-echo "Building Java 8 version"
-cd "$HOME/java-8" || exit
-jenv shell 1.8
-export JAVA_HOME=`jenv javahome`
-mvn clean verify
+runVersion() {
+  echo "========================="
+  echo "Running Java $1 version"
+  echo "========================="
+  cd "$HOME/java-$1" || exit
+  export JENV_VERSION=$2
+  export JAVA_HOME=$(jenv javahome)
+  if [ $1 -eq '8' ]; then
+    java -cp "./target/classes" examples.SimpleInterpreter
+  else
+    java --enable-preview -cp "./target/classes" examples.SimpleInterpreter
+  fi
+  echo ""
+}
 
-# clear
+buildVersion 8 1.8
+buildVersion 15 15.0.2
+buildVersion 17 17
+buildVersion 19 19-ea
 
-echo "Java 15 version"
-cd "$HOME/java-15" || exit
-java --enable-preview -cp "$HOME/java-15/target/classes" examples.SimpleInterpreter
-
-echo ""
-echo "Java 8 version"
-java -cp "$HOME/java-8/target/classes" examples.SimpleInterpreter
+runVersion 8 1.8
+runVersion 15 15.0.2
+runVersion 17 17
+runVersion 19 19-ea
