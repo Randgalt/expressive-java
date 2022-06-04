@@ -93,7 +93,7 @@ public interface SimpleInterpreter {
                 yield add(a.value, b.value);
             }
             case Lam(var x, var term) -> unitM(Fun(a -> interp(term, cons(Pair(x, a), e))));
-            case App(var f, var arg) app -> {
+            case App(var f, var arg) -> {
                 var a = interp(f, e);
                 var b = interp(arg, e);
                 yield apply(a.value, b.value);
