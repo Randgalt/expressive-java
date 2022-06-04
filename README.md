@@ -16,7 +16,7 @@ page and shows the expressiveness of case classes.
 
 Multiple attempts are shown. Versions in Java 15, 17 and 19 take advantage of records and Java's initial support for pattern matching. The other in Java 8.
 
-![comparison2](https://user-images.githubusercontent.com/264818/171994884-132ac070-ad86-4945-8e00-3a42885819d6.png)
+![comparison](https://user-images.githubusercontent.com/264818/171995071-e1a08b21-5816-48d0-b838-6f09ca4d33dc.png)
 
 ## Java 19 Attempt
 
