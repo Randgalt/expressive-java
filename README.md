@@ -21,7 +21,7 @@ Multiple attempts are shown. Versions in Java 15, 17 and 19 take advantage of re
 ## Java 19 Attempt
 
 Record patterns are now available and the Java version is nearly identical to the Scala version. Record patterns
-are limited to type comparison and extraction and so can't match on, for example, empty-list but that's aboout
+are limited to type comparison and extraction and so can't match on, for example, empty-list but that's about
 the only feature missing. Java is still more verbose (the need for `var` for example) but it's very impressive
 how close it now is. Java, of course, is still missing a built-in `Pair` syntax for list head/tail, etc.
 
