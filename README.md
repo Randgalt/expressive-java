@@ -90,6 +90,7 @@ casts must be done in the parts of the code that match on operation types.
   - Java 8:
     - [Helpers.java](https://github.com/Randgalt/expressive-java/blob/master/java-8/src/main/java/examples/Helpers.java)
     - [Pair.java](https://github.com/Randgalt/expressive-java/blob/master/java-8/src/main/java/examples/Pair.java)
+  - [Scala 3 Version of the interpreter](https://github.com/Randgalt/expressive-java/blob/master/SimpleScala3Interpreter.scala)
 
 ## Building/Running
 
